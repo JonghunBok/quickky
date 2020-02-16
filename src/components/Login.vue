@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>Log In</h2>
+    <p>aejfoiwajfiowjfoiwafjoi</p>
     <form @submit="onSubmit">
       <input placeholder="Enter youor ID" v-model="uid">
       <input placeholder="Enter youor password" v-model="password">
