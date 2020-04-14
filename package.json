@@ -9,6 +9,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vuetify/vuex-cognito-module": "^0.5.4",
+    "aws-sdk": "^2.656.0",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "postcss-load-config": "^2.1.0",

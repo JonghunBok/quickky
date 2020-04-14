@@ -1,14 +1,11 @@
 <template>
   <div>
-    <h2>Log In</h2>
-    <p>aejfoiwajfiowjfoiwafjoi</p>
     <form @submit="onSubmit">
-      <input placeholder="Enter youor ID" v-model="uid">
-      <input placeholder="Enter youor password" v-model="password">
+      <input placeholder="Enter your id" v-model="uid"> <br/>
+      <input placeholder="Enter your password" v-model="password"> <br/>
       <button type="submit">Login</button>
     </form>
     <div class="alert-danger" v-if="errorState">
-      <p>Errororororo</p>
     </div>
   </div>
 </template>
@@ -18,29 +15,30 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'Login',
+
   data: () => ({
     uid: '',
-    password: ''
+    password: '',
+    errorState: false
+    // attr: this.$store.getters['cognito/username']
   }),
+
   methods: {
     ...mapActions(['login']),
+
     async onSubmit () {
-      try {
-        const loginResult = await this.login({
-          uid: this.uid,
-          password: this.password
-        })
-        console.log(loginResult)
-      } catch (err) {
-        console.error(err)
+      if (await this.login(this.uid, this.password)) {
+        this.goToPages()
+      } else {
+        alert('Login Failed!')
       }
     },
+
     goToPages () {
       this.$router.push({
-        name: 'About'
+        name: 'Home'
       })
     }
-
   }
 }
 </script>

@@ -1,4 +1,5 @@
 import loginAPI from './loginAPI'
+import s3API from './s3API'
 
 export default {
   async login (uid, password) {
@@ -8,5 +9,6 @@ export default {
     } catch (err) {
       console.error(err)
     }
-  }
+  },
+  ...s3API
 }
