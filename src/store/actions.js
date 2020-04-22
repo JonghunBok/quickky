@@ -78,5 +78,14 @@ export default {
     // } else {
     // alert('You are not logged in!')
     // }
+  },
+
+  async getMemoContent ({ getters, state, commit }) {
+    const content = await api.getMemo(state.s3)
+    commit('SET_MEMO', content)
+  },
+
+  async putMemoContent ({ getters, state }, memo) {
+    await api.putMemo(state.s3, memo)
   }
 }

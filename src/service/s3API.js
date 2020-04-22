@@ -37,6 +37,8 @@ export default {
       Key: key
     }
 
+    console.log('getFileUrl s3:', s3)
+
     const promise = new Promise((resolve, reject) => {
       s3.getSignedUrl('getObject', params, (err, url) => {
         if (err) reject(err)
@@ -47,5 +49,43 @@ export default {
     return promise
       .then(url => url)
       .catch(err => console.log('err: ', err))
+  },
+
+  async getMemo (s3) {
+    const params = {
+      Bucket: 'quickky',
+      Key: 'memo'
+    }
+    console.log('s3:', s3)
+
+    const promise = new Promise((resolve, reject) => {
+      s3.getObject(params, (err, obj) => {
+        if (err) reject(err)
+        else resolve(obj)
+      })
+    })
+
+    return promise
+      .then(obj => obj)
+      .catch(err => console.log('memo err: ', err))
+  },
+
+  async putMemo (s3, memo) {
+    const params = {
+      Body: memo,
+      Bucket: 'quickky',
+      Key: 'memo'
+    }
+
+    const promise = new Promise((resolve, reject) => {
+      s3.putObject(params, (err, res) => {
+        if (err) reject(err)
+        else resolve(res)
+      })
+    })
+
+    return promise
+      .then(res => res)
+      .catch(err => console.log('put memo err: ', err))
   }
 }
