@@ -78,5 +78,12 @@ export default {
     // } else {
     // alert('You are not logged in!')
     // }
+  },
+
+  async getMemoContent ({ getters, state, commit }) {
+    const content = await api.getMemo(state.s3)
+    console.log('content in actino: ', content)
+
+    return content
   }
 }

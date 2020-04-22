@@ -47,5 +47,23 @@ export default {
     return promise
       .then(url => url)
       .catch(err => console.log('err: ', err))
+  },
+
+  async getMemo (s3) {
+    const params = {
+      Bucket: 'quickky',
+      Key: 'memo'
+    }
+
+    const promise = new Promise((resolve, reject) => {
+      s3.getObject(params, (err, obj) => {
+        if (err) reject(err)
+        else resolve(obj)
+      })
+    })
+
+    return promise
+      .then(obj => obj)
+      .catch(err => console.log('memo err: ', err))
   }
 }
