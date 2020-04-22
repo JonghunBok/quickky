@@ -11,6 +11,7 @@ import Inventory from '@/components/Inventory.vue'
 
 export default {
   name: 'Home',
+
   components: {
     Notepad,
     Inventory
