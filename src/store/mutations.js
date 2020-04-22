@@ -21,5 +21,9 @@ export default {
 
   GET_INVENTORY (state, inventory) {
     state.inventory = inventory
+  },
+
+  SET_MEMO (state, memo) {
+    state.memo = memo
   }
 }

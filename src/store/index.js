@@ -16,7 +16,8 @@ export default new Vuex.Store({
     api: {
     },
     inventory: [],
-    s3: {}
+    s3: {},
+    memo: ''
   },
   mutations,
   actions,

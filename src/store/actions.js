@@ -82,8 +82,10 @@ export default {
 
   async getMemoContent ({ getters, state, commit }) {
     const content = await api.getMemo(state.s3)
-    console.log('content in actino: ', content)
+    commit('SET_MEMO', content)
+  },
 
-    return content
+  async putMemoContent ({ getters, state }, memo) {
+    await api.putMemo(state.s3, memo)
   }
 }
