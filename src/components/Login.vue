@@ -24,10 +24,11 @@ export default {
   }),
 
   methods: {
-    ...mapActions(['login']),
+    ...mapActions(['login', 'getS3Object']),
 
     async onSubmit () {
       if (await this.login(this.uid, this.password)) {
+        await this.getS3Object()
         this.goToPages()
       } else {
         alert('Login Failed!')

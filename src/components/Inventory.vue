@@ -36,7 +36,6 @@ export default {
   },
 
   async mounted () {
-    this.getS3Object()
     console.log(this.getInventory())
   }
 }
